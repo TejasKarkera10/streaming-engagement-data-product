@@ -1,0 +1,74 @@
+{
+  "roc_auc": 0.8666916469706576,
+  "precision": 0.7864406779661017,
+  "recall": 0.6987951807228916,
+  "n_train": 2250,
+  "n_test": 750,
+  "churn_rate_test": 0.44266666666666665,
+  "top_churn_drivers": [
+    {
+      "feature": "sessions_per_week",
+      "mean_abs_shap": 0.9047893700945822
+    },
+    {
+      "feature": "avg_pct_completed",
+      "mean_abs_shap": 0.8688623370656771
+    },
+    {
+      "feature": "recency_days",
+      "mean_abs_shap": 0.4395936662423965
+    },
+    {
+      "feature": "tenure_days",
+      "mean_abs_shap": 0.1569819979909482
+    },
+    {
+      "feature": "genre_diversity",
+      "mean_abs_shap": 0.15613995641454909
+    },
+    {
+      "feature": "region_APAC",
+      "mean_abs_shap": 0.06053326724040546
+    },
+    {
+      "feature": "plan_tier_Premium",
+      "mean_abs_shap": 0.028159422872545362
+    },
+    {
+      "feature": "plan_tier_Basic",
+      "mean_abs_shap": 0.026403797632088156
+    },
+    {
+      "feature": "region_Europe",
+      "mean_abs_shap": 0.02621705150065741
+    },
+    {
+      "feature": "plan_tier_Standard",
+      "mean_abs_shap": 0.020969013216377508
+    },
+    {
+      "feature": "region_North America",
+      "mean_abs_shap": 0.008268352286513934
+    },
+    {
+      "feature": "region_Latin America",
+      "mean_abs_shap": 0.004267615831336758
+    }
+  ],
+  "feature_columns": [
+    "tenure_days",
+    "sessions_per_week",
+    "avg_pct_completed",
+    "recency_days",
+    "genre_diversity",
+    "plan_tier_Basic",
+    "plan_tier_Premium",
+    "plan_tier_Standard",
+    "region_APAC",
+    "region_Europe",
+    "region_Latin America",
+    "region_North America"
+  ],
+  "model": "LGBMClassifier",
+  "attribution_method": "shap.TreeExplainer (mean |SHAP value| on the held-out test set)"
+}
