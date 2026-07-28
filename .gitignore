@@ -3,7 +3,3 @@ __pycache__/
 *.pyc
 .pytest_cache/
 .DS_Store
-# Third-party MovieLens files are re-downloadable via `make data`
-# (scripts/build_data.py) and excluded here rather than redistributed,
-# even though the GroupLens license permits redistribution.
-data/movielens/
