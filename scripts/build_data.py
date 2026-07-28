@@ -115,6 +115,25 @@ def download_movielens() -> bool:
         return False
 
 
+def ensure_movielens_catalog() -> None:
+    """Idempotent: guarantee data/movielens/movies.csv exists before it's
+    read at runtime (by src/insight_agent.py, app.py, src/mcp_server.py).
+
+    data/movielens/ is gitignored (see README "Honest scope" - the raw
+    MovieLens files are re-downloadable, not redistributed), so a fresh
+    clone (e.g. Streamlit Community Cloud) won't have it even though
+    data/subscribers.csv, data/sessions.csv, and models/ ARE committed.
+    Without this, every runtime read of movies.csv would crash on first
+    deploy. Safe/cheap to call on every process start: no-ops if the file
+    is already there.
+    """
+    if (MOVIELENS_DIR / "movies.csv").exists():
+        return
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    if not download_movielens():
+        _fallback_movie_catalog()
+
+
 def _fallback_movie_catalog() -> None:
     """LAST-RESORT FALLBACK ONLY - used only if the real MovieLens download
     fails (e.g. no network in this sandbox). This is NOT the real MovieLens

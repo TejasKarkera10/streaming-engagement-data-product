@@ -57,6 +57,9 @@ KNOWN_TIERS = {"basic", "standard", "premium"}
 # Data access (real pandas/DuckDB computation - no fabricated numbers below)
 # --------------------------------------------------------------------------
 def _load_frames() -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
+    from scripts.build_data import ensure_movielens_catalog
+
+    ensure_movielens_catalog()
     subscribers = pd.read_csv(DATA_DIR / "subscribers.csv")
     sessions = pd.read_csv(DATA_DIR / "sessions.csv")
     movies = pd.read_csv(DATA_DIR / "movielens" / "movies.csv")
